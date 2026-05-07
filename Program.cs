@@ -91,9 +91,9 @@ try
     app.UseAuthorization();
 
     // ─── Routes ─────────────────────────────────────────────────────────────── 
-    app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Account}/{action=Login}/{id?}");
+  app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
     Log.Information("Inventory Dashboard starting up...");
     app.Run();
