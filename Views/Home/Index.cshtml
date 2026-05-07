@@ -1,0 +1,223 @@
+@model InventoryDashboard.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div>
+        <h1 class="page-title"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h1>
+        <p class="text-muted mb-0">Overview of your inventory — as of @DateTime.Now.ToString("dddd, dd MMMM yyyy")</p>
+    </div>
+    <div class="page-actions">
+        <a asp-controller="Items" asp-action="Index" class="btn btn-primary">
+            <i class="bi bi-table me-1"></i> View All Items
+        </a>
+        @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+        {
+            <a asp-controller="Items" asp-action="Add" class="btn btn-success">
+                <i class="bi bi-plus-circle me-1"></i> Add Item
+            </a>
+        }
+    </div>
+</div>
+
+<!-- Summary Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="stat-card stat-card-primary">
+            <div class="stat-icon"><i class="bi bi-boxes"></i></div>
+            <div class="stat-value">@Model.TotalItems</div>
+            <div class="stat-label">Total Assets</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card stat-card-success">
+            <div class="stat-icon"><i class="bi bi-check-circle"></i></div>
+            <div class="stat-value">@Model.ActiveItems</div>
+            <div class="stat-label">Active</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card stat-card-warning">
+            <div class="stat-icon"><i class="bi bi-tools"></i></div>
+            <div class="stat-value">@Model.ItemsInRepair</div>
+            <div class="stat-label">In Repair</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card stat-card-danger">
+            <div class="stat-icon"><i class="bi bi-archive"></i></div>
+            <div class="stat-value">@(Model.RetiredItems + Model.DisposedItems)</div>
+            <div class="stat-label">Retired / Disposed</div>
+        </div>
+    </div>
+</div>
+
+<!-- Alert Cards Row -->
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="stat-card stat-card-info">
+            <div class="stat-icon"><i class="bi bi-clock-history"></i></div>
+            <div class="stat-value">@Model.RecentlyAdded</div>
+            <div class="stat-label">Added in Last 7 Days</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="stat-card stat-card-amber">
+            <div class="stat-icon"><i class="bi bi-shield-exclamation"></i></div>
+            <div class="stat-value">@Model.WarrantyExpiringSoon</div>
+            <div class="stat-label">Warranty Expiring in 30 Days</div>
+        </div>
+    </div>
+</div>
+
+<!-- Tables Row -->
+<div class="row g-4 mb-4">
+    <!-- Recently Added -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="fw-semibold"><i class="bi bi-clock-history me-2 text-primary"></i>Recently Added</span>
+                <a asp-controller="Items" asp-action="Index" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body p-0">
+                @if (Model.RecentItems.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-header-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Added</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.RecentItems)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a asp-controller="Items" asp-action="Details" asp-route-id="@item.ItemID"
+                                               class="text-decoration-none fw-semibold">@item.Name</a>
+                                        </td>
+                                        <td><span class="badge badge-category">@item.Category</span></td>
+                                        <td>@Html.Partial("_StatusBadge", item.Status)</td>
+                                        <td class="text-muted small">@item.CreatedAt.ToString("dd MMM")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="empty-state py-4">
+                        <i class="bi bi-inbox"></i>
+                        <p>No items added recently.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Warranty Expiring Soon -->
+    <div class="col-lg-6">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="fw-semibold"><i class="bi bi-shield-exclamation me-2 text-warning"></i>Warranty Expiring Soon</span>
+                <span class="badge bg-warning text-dark">30 days</span>
+            </div>
+            <div class="card-body p-0">
+                @if (Model.ExpiringSoonItems.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-header-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Serial #</th>
+                                    <th>Expires</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ExpiringSoonItems)
+                                {
+                                    var daysLeft = (item.WarrantyExpiryDate!.Value - DateTime.UtcNow).Days;
+                                    <tr class="@(daysLeft <= 7 ? "table-danger" : "table-warning")">
+                                        <td class="fw-semibold">@item.Name</td>
+                                        <td class="font-mono small">@item.SerialNumber</td>
+                                        <td class="small">@item.WarrantyExpiryDate.Value.ToString("dd MMM yyyy")
+                                            <span class="badge bg-danger ms-1">@daysLeft d</span>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Items" asp-action="Details" asp-route-id="@item.ItemID"
+                                               class="btn btn-sm btn-outline-primary py-0">View</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="empty-state py-4">
+                        <i class="bi bi-shield-check text-success"></i>
+                        <p class="text-success">No warranties expiring soon.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Distribution Charts (CSS-only) -->
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <span class="fw-semibold"><i class="bi bi-pie-chart me-2 text-primary"></i>Items by Category</span>
+            </div>
+            <div class="card-body">
+                @foreach (var kv in Model.ItemsByCategory.OrderByDescending(x => x.Value))
+                {
+                    var pct = Model.TotalItems > 0 ? (int)((kv.Value * 100.0) / Model.TotalItems) : 0;
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="small fw-semibold">@kv.Key</span>
+                            <span class="small text-muted">@kv.Value items (@pct%)</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-primary" style="width: @pct%"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <span class="fw-semibold"><i class="bi bi-building me-2 text-primary"></i>Items by Department</span>
+            </div>
+            <div class="card-body">
+                @foreach (var kv in Model.ItemsByDepartment.OrderByDescending(x => x.Value))
+                {
+                    var pct = Model.TotalItems > 0 ? (int)((kv.Value * 100.0) / Model.TotalItems) : 0;
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="small fw-semibold">@kv.Key</span>
+                            <span class="small text-muted">@kv.Value items (@pct%)</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-accent" style="width: @pct%"></div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

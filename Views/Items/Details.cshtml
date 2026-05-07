@@ -1,0 +1,182 @@
+@model InventoryDashboard.Models.ItemViewModel
+@{
+    ViewData["Title"] = $"Asset Details — {Model.Name}";
+}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-1">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Items" asp-action="Index">Inventory</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+            </ol>
+        </nav>
+        <h1 class="page-title">
+            <i class="bi bi-file-text me-2"></i>@Model.Name
+            @if (Model.IsWarrantyExpiringSoon)
+            {
+                <span class="badge bg-warning text-dark ms-2 fs-6">⚠️ Warranty Expiring Soon</span>
+            }
+            @if (Model.IsWarrantyExpired)
+            {
+                <span class="badge bg-danger ms-2 fs-6">Warranty Expired</span>
+            }
+        </h1>
+    </div>
+    <div class="page-actions">
+        <a asp-action="ExportSingle" asp-route-id="@Model.ItemID"
+           class="btn btn-outline-success" id="btnExportItem">
+            <i class="bi bi-download me-1"></i> Download CSV
+        </a>
+        <button onclick="window.print()" class="btn btn-outline-secondary" id="btnPrint">
+            <i class="bi bi-printer me-1"></i> Print
+        </button>
+        @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+        {
+            <a asp-action="Update" asp-route-id="@Model.ItemID" class="btn btn-primary" id="btnEdit">
+                <i class="bi bi-pencil me-1"></i> Edit Item
+            </a>
+        }
+    </div>
+</div>
+
+<!-- Detail Card -->
+<div class="card detail-card print-area">
+    <div class="card-header detail-card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span class="badge badge-category me-2">@Model.Category</span>
+                @{
+                    var statusCls = Model.Status switch {
+                        "Active" => "bg-success", "In Repair" => "bg-warning text-dark",
+                        "Retired" => "bg-secondary", "Disposed" => "bg-danger", _ => "bg-light text-dark"
+                    };
+                    var condCls = Model.Condition switch {
+                        "New" => "bg-primary", "Good" => "bg-success", "Fair" => "bg-info text-dark",
+                        "Damaged" => "bg-danger", "Retired" => "bg-secondary", _ => "bg-light text-dark"
+                    };
+                }
+                <span class="badge @statusCls">@Model.Status</span>
+                <span class="badge @condCls ms-1">@Model.Condition</span>
+            </div>
+            <span class="text-muted small">Asset ID: #@Model.ItemID</span>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <!-- Basic Info -->
+            <div class="col-md-6 mb-4">
+                <h6 class="detail-section-title"><i class="bi bi-info-circle me-2"></i>Basic Information</h6>
+                <dl class="detail-list">
+                    <dt>Item Name</dt><dd>@Model.Name</dd>
+                    <dt>Serial Number</dt><dd class="font-mono">@Model.SerialNumber</dd>
+                    <dt>Category</dt><dd>@Model.Category</dd>
+                    <dt>Brand</dt><dd>@(Model.Brand ?? "—")</dd>
+                    <dt>Model</dt><dd>@(Model.Model ?? "—")</dd>
+                </dl>
+            </div>
+
+            <!-- Assignment Info -->
+            <div class="col-md-6 mb-4">
+                <h6 class="detail-section-title"><i class="bi bi-person-check me-2"></i>Assignment Information</h6>
+                <dl class="detail-list">
+                    <dt>Department</dt><dd>@Model.Department</dd>
+                    <dt>Assigned To</dt><dd>@(Model.AssignedTo ?? "—")</dd>
+                    <dt>Location</dt><dd>@(Model.Location ?? "—")</dd>
+                </dl>
+            </div>
+
+            <!-- Purchase Info -->
+            <div class="col-md-6 mb-4">
+                <h6 class="detail-section-title"><i class="bi bi-receipt me-2"></i>Purchase Information</h6>
+                <dl class="detail-list">
+                    <dt>Purchase Date</dt><dd>@(Model.PurchaseDate?.ToString("dd MMMM yyyy") ?? "—")</dd>
+                    <dt>Purchase Price</dt>
+                    <dd>@(Model.PurchasePrice.HasValue ? $"₹ {Model.PurchasePrice.Value:N2}" : "—")</dd>
+                    <dt>Vendor</dt><dd>@(Model.Vendor ?? "—")</dd>
+                    <dt>Invoice Number</dt><dd>@(Model.InvoiceNumber ?? "—")</dd>
+                </dl>
+            </div>
+
+            <!-- Lifecycle Info -->
+            <div class="col-md-6 mb-4">
+                <h6 class="detail-section-title"><i class="bi bi-calendar-check me-2"></i>Lifecycle Information</h6>
+                <dl class="detail-list">
+                    <dt>Installed Date</dt><dd>@(Model.InstalledDate?.ToString("dd MMMM yyyy") ?? "—")</dd>
+                    <dt>Warranty Expiry</dt>
+                    <dd class="@(Model.IsWarrantyExpiringSoon ? "text-warning fw-bold" : Model.IsWarrantyExpired ? "text-danger" : "")">
+                        @(Model.WarrantyExpiryDate?.ToString("dd MMMM yyyy") ?? "—")
+                        @if (Model.IsWarrantyExpiringSoon) { <span class="ms-1">⚠️</span> }
+                        @if (Model.IsWarrantyExpired) { <span class="badge bg-danger ms-1">Expired</span> }
+                    </dd>
+                    <dt>Condition</dt><dd>@Model.Condition</dd>
+                    <dt>Status</dt><dd>@Model.Status</dd>
+                </dl>
+            </div>
+
+            <!-- Record Info -->
+            <div class="col-md-6 mb-4">
+                <h6 class="detail-section-title"><i class="bi bi-clock me-2"></i>Record Information</h6>
+                <dl class="detail-list">
+                    <dt>Added By</dt><dd>@(Model.AddedByUserName ?? "—")</dd>
+                    <dt>Created At</dt><dd>@Model.CreatedAt.ToString("dd MMM yyyy, HH:mm") UTC</dd>
+                    <dt>Last Updated</dt><dd>@Model.UpdatedAt.ToString("dd MMM yyyy, HH:mm") UTC</dd>
+                </dl>
+            </div>
+
+            <!-- Notes -->
+            @if (!string.IsNullOrWhiteSpace(Model.Notes))
+            {
+                <div class="col-12 mb-2">
+                    <h6 class="detail-section-title"><i class="bi bi-chat-left-text me-2"></i>Notes</h6>
+                    <div class="notes-box">@Model.Notes</div>
+                </div>
+            }
+        </div>
+
+        <!-- Delete (Admin only) -->
+        @if (User.IsInRole("Admin"))
+        {
+            <div class="border-top pt-3 mt-2">
+                <button type="button" class="btn btn-outline-danger btn-sm no-print"
+                        data-bs-toggle="modal" data-bs-target="#deleteModal" id="btnDeleteItem">
+                    <i class="bi bi-trash me-1"></i> Delete This Item
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+@if (User.IsInRole("Admin"))
+{
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteModalLabel">
+                        <i class="bi bi-exclamation-triangle me-2"></i>Confirm Delete
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to permanently delete <strong>@Model.Name</strong>?</p>
+                    <p class="text-danger small"><i class="bi bi-exclamation-circle me-1"></i>
+                        This action cannot be undone. All records will be removed.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form asp-action="Delete" asp-route-id="@Model.ItemID" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger" id="btnConfirmDelete">
+                            <i class="bi bi-trash me-1"></i> Yes, Delete Permanently
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

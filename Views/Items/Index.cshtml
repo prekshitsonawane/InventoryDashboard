@@ -1,0 +1,240 @@
+@model InventoryDashboard.Models.ItemListViewModel
+@{
+    ViewData["Title"] = "All Inventory Items";
+    var search = Model.Search ?? "";
+    var cat = Model.Category ?? "";
+    var stat = Model.Status ?? "";
+    var cond = Model.Condition ?? "";
+    var dept = Model.Department ?? "";
+}
+
+<!-- Page Header -->
+<div class="page-header">
+    <div>
+        <h1 class="page-title"><i class="bi bi-table me-2"></i>Inventory Items</h1>
+        <p class="text-muted mb-0">
+            Showing <strong>@Model.StartItem–@Model.EndItem</strong> of <strong>@Model.TotalCount</strong> items
+        </p>
+    </div>
+    <div class="page-actions">
+        @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+        {
+            <a asp-action="Add" class="btn btn-success" id="btnAddItem">
+                <i class="bi bi-plus-circle me-1"></i> Add New Item
+            </a>
+        }
+        <a asp-action="ExportAll"
+           asp-route-search="@search" asp-route-category="@cat"
+           asp-route-status="@stat" asp-route-condition="@cond"
+           asp-route-department="@dept"
+           class="btn btn-outline-success" id="btnDownloadAll">
+            <i class="bi bi-download me-1"></i> Download CSV
+        </a>
+    </div>
+</div>
+
+<!-- Search & Filters -->
+<div class="card mb-3">
+    <div class="card-body py-3">
+        <form method="get" asp-action="Index" id="filterForm">
+            <div class="row g-2 align-items-end">
+                <div class="col-12 col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" name="search" value="@search"
+                               class="form-control" placeholder="Search name, serial, department, assignee…"
+                               id="searchInput" />
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <select name="category" class="form-select" id="filterCategory">
+                        <option value="">All Categories</option>
+                        @foreach (var c in (List<string>)ViewBag.Categories)
+                        {
+                            <option value="@c" selected="@(cat == c)">@c</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <select name="status" class="form-select" id="filterStatus">
+                        <option value="">All Statuses</option>
+                        @foreach (var s in (List<string>)ViewBag.AllStatuses)
+                        {
+                            <option value="@s" selected="@(stat == s)">@s</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <select name="condition" class="form-select" id="filterCondition">
+                        <option value="">All Conditions</option>
+                        @foreach (var c in (List<string>)ViewBag.AllConditions)
+                        {
+                            <option value="@c" selected="@(cond == c)">@c</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary flex-fill" id="btnFilter">
+                            <i class="bi bi-funnel me-1"></i> Filter
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary" title="Clear filters">
+                            <i class="bi bi-x-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Items Table -->
+<div class="card">
+    <div class="card-body p-0">
+        @if (Model.Items.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered mb-0 items-table" id="itemsTable">
+                    <thead class="table-header-primary">
+                        <tr>
+                            <th style="width:50px">#</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Serial Number</th>
+                            <th>Department</th>
+                            <th>Assigned To</th>
+                            <th>Status</th>
+                            <th>Condition</th>
+                            <th style="width:130px" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = Model.StartItem; }
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr class="@(item.IsWarrantyExpiringSoon ? "row-warranty-warning" : "")">
+                                <td class="text-muted small">@(i++)</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div>
+                                            <div class="fw-semibold">@item.Name</div>
+                                            @if (!string.IsNullOrEmpty(item.Brand) || !string.IsNullOrEmpty(item.Model))
+                                            {
+                                                <div class="text-muted small">@item.Brand @item.Model</div>
+                                            }
+                                        </div>
+                                        @if (item.IsWarrantyExpiringSoon)
+                                        {
+                                            <span class="badge bg-warning text-dark" title="Warranty expiring soon">⚠️</span>
+                                        }
+                                        @if (item.IsWarrantyExpired)
+                                        {
+                                            <span class="badge bg-danger" title="Warranty expired">Expired</span>
+                                        }
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-category">@item.Category</span></td>
+                                <td class="font-mono small">@item.SerialNumber</td>
+                                <td>@item.Department</td>
+                                <td>@(item.AssignedTo ?? "—")</td>
+                                <td>
+                                    @{
+                                        var statusCls = item.Status switch {
+                                            "Active" => "bg-success",
+                                            "In Repair" => "bg-warning text-dark",
+                                            "Retired" => "bg-secondary",
+                                            "Disposed" => "bg-danger",
+                                            _ => "bg-light text-dark"
+                                        };
+                                    }
+                                    <span class="badge @statusCls">@item.Status</span>
+                                </td>
+                                <td>
+                                    @{
+                                        var condCls = item.Condition switch {
+                                            "New" => "bg-primary",
+                                            "Good" => "bg-success",
+                                            "Fair" => "bg-info text-dark",
+                                            "Damaged" => "bg-danger",
+                                            "Retired" => "bg-secondary",
+                                            _ => "bg-light text-dark"
+                                        };
+                                    }
+                                    <span class="badge @condCls">@item.Condition</span>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-action="Details" asp-route-id="@item.ItemID"
+                                           class="btn btn-primary" title="View Details">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                                        {
+                                            <a asp-action="Update" asp-route-id="@item.ItemID"
+                                               class="btn btn-outline-secondary" title="Edit">
+                                                <i class="bi bi-pencil"></i>
+                                            </a>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            @if (Model.TotalPages > 1)
+            {
+                <div class="d-flex justify-content-between align-items-center px-3 py-2 border-top">
+                    <span class="text-muted small">Page @Model.PageNumber of @Model.TotalPages</span>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item @(Model.PageNumber <= 1 ? "disabled" : "")">
+                                <a class="page-link" asp-action="Index"
+                                   asp-route-page="@(Model.PageNumber - 1)"
+                                   asp-route-search="@search" asp-route-category="@cat"
+                                   asp-route-status="@stat" asp-route-condition="@cond"
+                                   asp-route-department="@dept">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                            @for (int p = Math.Max(1, Model.PageNumber - 2); p <= Math.Min(Model.TotalPages, Model.PageNumber + 2); p++)
+                            {
+                                <li class="page-item @(p == Model.PageNumber ? "active" : "")">
+                                    <a class="page-link" asp-action="Index"
+                                       asp-route-page="@p" asp-route-search="@search"
+                                       asp-route-category="@cat" asp-route-status="@stat"
+                                       asp-route-condition="@cond" asp-route-department="@dept">@p</a>
+                                </li>
+                            }
+                            <li class="page-item @(Model.PageNumber >= Model.TotalPages ? "disabled" : "")">
+                                <a class="page-link" asp-action="Index"
+                                   asp-route-page="@(Model.PageNumber + 1)"
+                                   asp-route-search="@search" asp-route-category="@cat"
+                                   asp-route-status="@stat" asp-route-condition="@cond"
+                                   asp-route-department="@dept">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="empty-state">
+                <i class="bi bi-inbox"></i>
+                <h5>No items found</h5>
+                <p>@(string.IsNullOrEmpty(search) && string.IsNullOrEmpty(cat) ? "Add your first asset to get started." : "Try adjusting your search or filters.")</p>
+                @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                {
+                    <a asp-action="Add" class="btn btn-primary mt-2">
+                        <i class="bi bi-plus-circle me-1"></i> Add New Item
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</div>

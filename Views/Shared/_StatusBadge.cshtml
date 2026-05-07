@@ -1,0 +1,13 @@
+@* Renders a colored badge for an item status string *@
+@model string
+@{
+    var cls = Model switch
+    {
+        "Active"    => "bg-success",
+        "In Repair" => "bg-warning text-dark",
+        "Retired"   => "bg-secondary",
+        "Disposed"  => "bg-danger",
+        _           => "bg-light text-dark"
+    };
+}
+<span class="badge @cls">@Model</span>

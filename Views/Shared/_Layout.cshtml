@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Internal Inventory Management Dashboard — track, manage, and export company assets." />
+    <title>@(ViewData["Title"] != null ? $"{ViewData["Title"]} — Inventory System" : "Inventory Management System")</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        @await Html.PartialAsync("_NavBar")
+    }
+
+    <!-- Toast Notifications -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+        @if (TempData["Success"] != null)
+        {
+            <div id="toast-success" class="toast align-items-center text-bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="bi bi-check-circle-fill me-2"></i> @TempData["Success"]
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div id="toast-error" class="toast align-items-center text-bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"]
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Main Content -->
+    <main class="@(User.Identity?.IsAuthenticated == true ? "main-content" : "")">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <footer class="app-footer">
+            <span>&copy; @DateTime.Now.Year Your Company Name</span>
+            <span class="mx-2">|</span>
+            <span>Internal Use Only</span>
+        </footer>
+    }
+
+    <!-- Session Timeout Warning Modal -->
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <div class="modal fade" id="sessionWarningModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <h5 class="modal-title fw-bold"><i class="bi bi-clock me-2"></i>Session Expiring Soon</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your session will expire in <strong><span id="countdown">5:00</span></strong>.</p>
+                        <p class="text-muted small">Click "Extend Session" to stay logged in.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="extendSessionBtn">
+                            <i class="bi bi-arrow-repeat me-1"></i> Extend Session
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

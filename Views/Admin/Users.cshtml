@@ -1,0 +1,123 @@
+@using InventoryDashboard.Models
+@model List<ApplicationUser>
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<div class="page-header">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-1">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                <li class="breadcrumb-item active">User Management</li>
+            </ol>
+        </nav>
+        <h1 class="page-title"><i class="bi bi-people me-2"></i>User Management</h1>
+        <p class="text-muted mb-0">@Model.Count registered user(s)</p>
+    </div>
+    <div class="page-actions">
+        <a asp-action="CreateUser" class="btn btn-primary" id="btnCreateUser">
+            <i class="bi bi-person-plus me-1"></i> Create User
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered mb-0" id="usersTable">
+                <thead class="table-header-primary">
+                    <tr>
+                        <th>Username</th>
+                        <th>Full Name</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Created</th>
+                        <th class="text-center" style="width:160px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        var roleCls = user.Role switch {
+                            "Admin"  => "bg-danger",
+                            "Editor" => "bg-primary",
+                            "Viewer" => "bg-secondary",
+                            _ => "bg-light text-dark"
+                        };
+                        var isCurrent = User.Identity?.Name == user.UserName;
+                        <tr class="@(isCurrent ? "table-active" : "")">
+                            <td>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="user-avatar-sm">@user.UserName?[0].ToString().ToUpper()</div>
+                                    <div>
+                                        <div class="fw-semibold">@user.UserName</div>
+                                        @if (isCurrent) { <span class="badge bg-primary">You</span> }
+                                        @if (user.MustChangePassword) { <span class="badge bg-warning text-dark ms-1">Pw Reset</span> }
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@(user.FullName ?? "—")</td>
+                            <td>@(user.Department ?? "—")</td>
+                            <td><span class="badge @roleCls">@user.Role</span></td>
+                            <td class="text-muted small">@user.CreatedAt.ToString("dd MMM yyyy")</td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="ResetPassword" asp-route-userId="@user.Id"
+                                       class="btn btn-outline-warning" title="Reset Password">
+                                        <i class="bi bi-key"></i>
+                                    </a>
+                                    @if (!isCurrent)
+                                    {
+                                        <button type="button" class="btn btn-outline-danger"
+                                                title="Delete User"
+                                                onclick="confirmDeleteUser('@user.Id', '@user.UserName')"
+                                                id="btnDelUser-@user.Id">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Delete User Modal -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title"><i class="bi bi-exclamation-triangle me-2"></i>Delete User</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete user <strong id="deleteUserName"></strong>?</p>
+                <p class="text-muted small">This will not delete items they added.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteUserForm" method="post" asp-action="DeleteUser">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="userId" id="deleteUserId" />
+                    <button type="submit" class="btn btn-danger" id="btnConfirmDelUser">
+                        <i class="bi bi-trash me-1"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+function confirmDeleteUser(userId, userName) {
+    document.getElementById('deleteUserId').value = userId;
+    document.getElementById('deleteUserName').textContent = userName;
+    new bootstrap.Modal(document.getElementById('deleteUserModal')).show();
+}
+</script>
+}

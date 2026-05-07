@@ -1,0 +1,350 @@
+2026-05-07 09:28:29.843 +05:30 [INF] HTTP GET /Items/Details/9 responded 302 in 23.5816 ms
+2026-05-07 09:28:29.878 +05:30 [INF] HTTP GET /Account/Login responded 200 in 4.0109 ms
+2026-05-07 09:28:32.223 +05:30 [INF] User 'admin' logged in.
+2026-05-07 09:28:32.227 +05:30 [INF] HTTP POST / responded 302 in 97.2819 ms
+2026-05-07 09:28:32.240 +05:30 [INF] HTTP GET /Items/Details/9 responded 200 in 5.7875 ms
+2026-05-07 09:28:39.699 +05:30 [INF] HTTP GET /Items/Update/9 responded 200 in 4.4461 ms
+2026-05-07 09:28:54.533 +05:30 [INF] HTTP POST /Items/Update/9 responded 400 in 1.1635 ms
+2026-05-07 09:29:29.926 +05:30 [INF] HTTP GET /Items/Add responded 200 in 3.0197 ms
+2026-05-07 09:30:40.599 +05:30 [INF] HTTP POST /Items/Add responded 200 in 4.3346 ms
+2026-05-07 09:30:42.951 +05:30 [INF] HTTP GET /Home/Index responded 200 in 3.0897 ms
+2026-05-07 09:30:49.472 +05:30 [INF] HTTP GET /Home/Index responded 200 in 2.1107 ms
+2026-05-07 09:33:14.894 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 09:35:08.854 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 09:35:08.923 +05:30 [INF] HTTP GET / responded 302 in 62.2468 ms
+2026-05-07 09:35:09.198 +05:30 [INF] HTTP GET /Home/Index responded 200 in 264.0598 ms
+2026-05-07 09:35:12.801 +05:30 [INF] HTTP GET /Items/Add responded 200 in 172.4557 ms
+2026-05-07 09:35:43.111 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:35:43.121 +05:30 [INF] HTTP POST /Items/Add responded 200 in 45.6186 ms
+2026-05-07 09:37:15.274 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:37:15.279 +05:30 [INF] HTTP POST /Items/Add responded 200 in 7.3591 ms
+2026-05-07 09:38:44.390 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 09:38:51.094 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 09:38:51.201 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:38:51.407 +05:30 [INF] HTTP POST /Items/Add responded 200 in 304.9360 ms
+2026-05-07 09:38:55.774 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:38:55.789 +05:30 [INF] HTTP POST /Items/Add responded 200 in 25.6685 ms
+2026-05-07 09:38:58.409 +05:30 [INF] HTTP GET /Home/Index responded 200 in 143.3174 ms
+2026-05-07 09:39:00.345 +05:30 [INF] HTTP GET /Items/Index responded 200 in 181.0990 ms
+2026-05-07 09:39:04.919 +05:30 [INF] HTTP GET /Items/Add responded 200 in 7.5373 ms
+2026-05-07 09:40:00.623 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:40:00.628 +05:30 [INF] HTTP POST /Items/Add responded 200 in 6.6854 ms
+2026-05-07 09:42:14.808 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:42:14.813 +05:30 [INF] HTTP POST /Items/Add responded 200 in 6.7258 ms
+2026-05-07 09:45:00.498 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 09:45:08.348 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 09:45:08.598 +05:30 [INF] HTTP GET /Home/Index responded 200 in 242.8369 ms
+2026-05-07 09:45:09.597 +05:30 [INF] HTTP GET /Home/Index responded 200 in 78.9459 ms
+2026-05-07 09:45:10.208 +05:30 [INF] HTTP GET /Home/Index responded 200 in 26.9635 ms
+2026-05-07 09:45:10.333 +05:30 [INF] HTTP GET /Home/Index responded 200 in 4.4393 ms
+2026-05-07 09:45:10.478 +05:30 [INF] HTTP GET /Home/Index responded 200 in 5.9199 ms
+2026-05-07 09:45:10.630 +05:30 [INF] HTTP GET /Home/Index responded 200 in 4.4638 ms
+2026-05-07 09:45:10.784 +05:30 [INF] HTTP GET /Home/Index responded 200 in 4.6166 ms
+2026-05-07 09:45:10.944 +05:30 [INF] HTTP GET /Home/Index responded 200 in 2.9468 ms
+2026-05-07 09:45:11.159 +05:30 [INF] HTTP GET /Home/Index responded 200 in 2.9236 ms
+2026-05-07 09:45:12.652 +05:30 [INF] HTTP GET /Items/Index responded 200 in 229.3840 ms
+2026-05-07 09:45:14.704 +05:30 [INF] HTTP GET /Items/Add responded 200 in 111.4799 ms
+2026-05-07 09:46:14.447 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:46:14.452 +05:30 [INF] HTTP POST /Items/Add responded 200 in 37.5522 ms
+2026-05-07 09:50:06.260 +05:30 [WRN] Add Item form submitted with invalid model state.
+2026-05-07 09:50:06.266 +05:30 [INF] HTTP POST /Items/Add responded 200 in 7.8661 ms
+2026-05-07 09:50:24.725 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 09:50:26.646 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 09:50:26.745 +05:30 [INF] Add POST received. Form Keys: Name, SerialNumber, Category, Brand, Model, Status, Condition, Department, AssignedTo, Location, PurchaseDate, __Invariant, PurchasePrice, InstalledDate, WarrantyExpiryDate, Vendor, InvoiceNumber, Notes, __RequestVerificationToken
+2026-05-07 09:50:26.750 +05:30 [INF] Form Data - Name: ["SWITCH "]
+2026-05-07 09:50:26.755 +05:30 [INF] Form Data - SerialNumber: ["0002"]
+2026-05-07 09:50:26.757 +05:30 [INF] Form Data - Category: ["Hardware"]
+2026-05-07 09:50:26.759 +05:30 [INF] Form Data - Brand: ["CICO"]
+2026-05-07 09:50:26.761 +05:30 [INF] Form Data - Model: ["K454"]
+2026-05-07 09:50:26.763 +05:30 [INF] Form Data - Status: ["Active"]
+2026-05-07 09:50:26.765 +05:30 [INF] Form Data - Condition: ["Good"]
+2026-05-07 09:50:26.767 +05:30 [INF] Form Data - Department: ["CMD"]
+2026-05-07 09:50:26.769 +05:30 [INF] Form Data - AssignedTo: ["SIR"]
+2026-05-07 09:50:26.771 +05:30 [INF] Form Data - Location: ["SHOP 098"]
+2026-05-07 09:50:26.773 +05:30 [INF] Form Data - PurchaseDate: ["2025-05-02"]
+2026-05-07 09:50:26.775 +05:30 [INF] Form Data - __Invariant: ["PurchaseDate","PurchasePrice","InstalledDate","WarrantyExpiryDate"]
+2026-05-07 09:50:26.779 +05:30 [INF] Form Data - PurchasePrice: ["100000"]
+2026-05-07 09:50:26.781 +05:30 [INF] Form Data - InstalledDate: ["2026-01-02"]
+2026-05-07 09:50:26.784 +05:30 [INF] Form Data - WarrantyExpiryDate: ["2029-04-06"]
+2026-05-07 09:50:26.786 +05:30 [INF] Form Data - Vendor: ["HUIII"]
+2026-05-07 09:50:26.788 +05:30 [INF] Form Data - InvoiceNumber: ["CUV102365"]
+2026-05-07 09:50:26.790 +05:30 [INF] Form Data - Notes: [""]
+2026-05-07 09:50:26.792 +05:30 [INF] Form Data - __RequestVerificationToken: ["CfDJ8K7-ShCvWIpPnzuEzzQvonazv4i5_5-YAtN-fo--Vqs8nzWWPN3AnIlCADi56jAJ9c_3VYUBPFA3NEVk_1nKwuN04QHdBDSiEMSXNKH2jBazxBY9HJQ1IqycxOiV1mV7q1t38QprlzR6rOK4BB2n9bEEIRB9TU8AXcobBq9JO_BLHIYt2eZ4SAKIeY2Xm_8d2A"]
+2026-05-07 09:50:26.796 +05:30 [WRN] Validation Error - Key: model.Name, Errors: Item name is required.
+2026-05-07 09:50:26.797 +05:30 [WRN] Validation Error - Key: model.Category, Errors: Category is required.
+2026-05-07 09:50:26.799 +05:30 [WRN] Validation Error - Key: model.Department, Errors: Department is required.
+2026-05-07 09:50:26.806 +05:30 [WRN] Validation Error - Key: model.SerialNumber, Errors: Serial number is required.
+2026-05-07 09:50:26.975 +05:30 [INF] HTTP POST /Items/Add responded 200 in 320.3063 ms
+2026-05-07 09:50:29.894 +05:30 [INF] HTTP GET /Home/Index responded 200 in 132.7674 ms
+2026-05-07 09:50:31.009 +05:30 [INF] HTTP GET /Items/Index responded 200 in 235.8651 ms
+2026-05-07 09:50:32.984 +05:30 [INF] HTTP GET /Items/Add responded 200 in 8.3978 ms
+2026-05-07 09:53:42.439 +05:30 [INF] Add POST received. Form Keys: Name, SerialNumber, Category, Brand, Model, Status, Condition, Department, AssignedTo, Location, PurchaseDate, PurchasePrice, InstalledDate, WarrantyExpiryDate, Vendor, InvoiceNumber, Notes, __RequestVerificationToken
+2026-05-07 09:53:42.440 +05:30 [INF] Form Data - Name: ["MacBook Pro M3 Max"]
+2026-05-07 09:53:42.442 +05:30 [INF] Form Data - SerialNumber: ["MB-2024-APL-99X"]
+2026-05-07 09:53:42.444 +05:30 [INF] Form Data - Category: ["Hardware"]
+2026-05-07 09:53:42.447 +05:30 [INF] Form Data - Brand: ["Apple"]
+2026-05-07 09:53:42.450 +05:30 [INF] Form Data - Model: ["A2991 (16-inch)"]
+2026-05-07 09:53:42.452 +05:30 [INF] Form Data - Status: ["Active"]
+2026-05-07 09:53:42.454 +05:30 [INF] Form Data - Condition: ["New"]
+2026-05-07 09:53:42.456 +05:30 [INF] Form Data - Department: ["Design Team "]
+2026-05-07 09:53:42.458 +05:30 [INF] Form Data - AssignedTo: ["Alex Designer"]
+2026-05-07 09:53:42.459 +05:30 [INF] Form Data - Location: ["Floor 3 - Studio B"]
+2026-05-07 09:53:42.461 +05:30 [INF] Form Data - PurchaseDate: ["15th Jan 2024"]
+2026-05-07 09:53:42.464 +05:30 [INF] Form Data - PurchasePrice: [" 350000 plus tax"]
+2026-05-07 09:53:42.466 +05:30 [INF] Form Data - InstalledDate: ["02/04/2025"]
+2026-05-07 09:53:42.468 +05:30 [INF] Form Data - WarrantyExpiryDate: ["01/05/2026"]
+2026-05-07 09:53:42.470 +05:30 [INF] Form Data - Vendor: ["HUIII"]
+2026-05-07 09:53:42.471 +05:30 [INF] Form Data - InvoiceNumber: ["CUV102365"]
+2026-05-07 09:53:42.473 +05:30 [INF] Form Data - Notes: [""]
+2026-05-07 09:53:42.475 +05:30 [INF] Form Data - __RequestVerificationToken: ["CfDJ8K7-ShCvWIpPnzuEzzQvonYKN7MYyRaWuJRWOHsW0i7Jc3Y7NRGLXl3mH780m9HU614-UNy_KOeCMtEtFFYdi9itivhVCYsiv2KBaefEJqoSrcbjE9rdvSYYJUGQovka9B8QdXPZy6eUqadpdqyYcQ-KGvgugzSSJ5kovI6yaEOuvqcxVznawpoNnOF5XChKIw"]
+2026-05-07 09:53:42.478 +05:30 [WRN] Validation Error - Key: model.Name, Errors: Item name is required.
+2026-05-07 09:53:42.479 +05:30 [WRN] Validation Error - Key: model.Category, Errors: Category is required.
+2026-05-07 09:53:42.481 +05:30 [WRN] Validation Error - Key: model.Department, Errors: Department is required.
+2026-05-07 09:53:42.482 +05:30 [WRN] Validation Error - Key: model.SerialNumber, Errors: Serial number is required.
+2026-05-07 09:53:42.488 +05:30 [INF] HTTP POST /Items/Add responded 200 in 51.6964 ms
+2026-05-07 09:57:06.904 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 09:57:09.973 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 09:57:10.072 +05:30 [INF] Add POST received. Form Keys: Name, SerialNumber, Category, Brand, Model, Status, Condition, Department, AssignedTo, Location, PurchaseDate, PurchasePrice, InstalledDate, WarrantyExpiryDate, Vendor, InvoiceNumber, Notes, __RequestVerificationToken
+2026-05-07 09:57:10.078 +05:30 [INF] Form Data - Name: ["MacBook Pro M3 Max"]
+2026-05-07 09:57:10.083 +05:30 [INF] Form Data - SerialNumber: ["MB-2024-APL-99X"]
+2026-05-07 09:57:10.086 +05:30 [INF] Form Data - Category: ["Hardware"]
+2026-05-07 09:57:10.088 +05:30 [INF] Form Data - Brand: ["Apple"]
+2026-05-07 09:57:10.090 +05:30 [INF] Form Data - Model: ["A2991 (16-inch)"]
+2026-05-07 09:57:10.091 +05:30 [INF] Form Data - Status: ["Active"]
+2026-05-07 09:57:10.093 +05:30 [INF] Form Data - Condition: ["New"]
+2026-05-07 09:57:10.095 +05:30 [INF] Form Data - Department: ["Design Team "]
+2026-05-07 09:57:10.097 +05:30 [INF] Form Data - AssignedTo: ["Alex Designer"]
+2026-05-07 09:57:10.099 +05:30 [INF] Form Data - Location: ["Floor 3 - Studio B"]
+2026-05-07 09:57:10.101 +05:30 [INF] Form Data - PurchaseDate: ["15th Jan 2024"]
+2026-05-07 09:57:10.103 +05:30 [INF] Form Data - PurchasePrice: [" 350000 plus tax"]
+2026-05-07 09:57:10.106 +05:30 [INF] Form Data - InstalledDate: ["02/04/2025"]
+2026-05-07 09:57:10.107 +05:30 [INF] Form Data - WarrantyExpiryDate: ["01/05/2026"]
+2026-05-07 09:57:10.109 +05:30 [INF] Form Data - Vendor: ["HUIII"]
+2026-05-07 09:57:10.111 +05:30 [INF] Form Data - InvoiceNumber: ["CUV102365"]
+2026-05-07 09:57:10.114 +05:30 [INF] Form Data - Notes: [""]
+2026-05-07 09:57:10.115 +05:30 [INF] Form Data - __RequestVerificationToken: ["CfDJ8K7-ShCvWIpPnzuEzzQvonYKN7MYyRaWuJRWOHsW0i7Jc3Y7NRGLXl3mH780m9HU614-UNy_KOeCMtEtFFYdi9itivhVCYsiv2KBaefEJqoSrcbjE9rdvSYYJUGQovka9B8QdXPZy6eUqadpdqyYcQ-KGvgugzSSJ5kovI6yaEOuvqcxVznawpoNnOF5XChKIw"]
+2026-05-07 09:57:10.457 +05:30 [INF] Item 11 'MacBook Pro M3 Max' added by admin.
+2026-05-07 09:57:10.473 +05:30 [INF] HTTP POST /Items/Add responded 302 in 492.5774 ms
+2026-05-07 09:57:10.669 +05:30 [INF] HTTP GET /Items/Details/11 responded 200 in 186.7842 ms
+2026-05-07 09:57:20.247 +05:30 [INF] HTTP GET /Home/Index responded 200 in 71.8673 ms
+2026-05-07 09:57:22.607 +05:30 [INF] HTTP GET /Items/Add responded 200 in 124.1999 ms
+2026-05-07 09:58:25.699 +05:30 [INF] Add POST received. Form Keys: Name, SerialNumber, Category, Brand, Model, Status, Condition, Department, AssignedTo, Location, PurchaseDate, PurchasePrice, InstalledDate, WarrantyExpiryDate, Vendor, InvoiceNumber, Notes, __RequestVerificationToken
+2026-05-07 09:58:25.702 +05:30 [INF] Form Data - Name: ["SWITCH "]
+2026-05-07 09:58:25.704 +05:30 [INF] Form Data - SerialNumber: ["0002"]
+2026-05-07 09:58:25.707 +05:30 [INF] Form Data - Category: ["Hardware"]
+2026-05-07 09:58:25.710 +05:30 [INF] Form Data - Brand: ["CICO"]
+2026-05-07 09:58:25.713 +05:30 [INF] Form Data - Model: ["K454"]
+2026-05-07 09:58:25.716 +05:30 [INF] Form Data - Status: ["Active"]
+2026-05-07 09:58:25.718 +05:30 [INF] Form Data - Condition: ["New"]
+2026-05-07 09:58:25.721 +05:30 [INF] Form Data - Department: ["CMD"]
+2026-05-07 09:58:25.723 +05:30 [INF] Form Data - AssignedTo: ["SIR"]
+2026-05-07 09:58:25.725 +05:30 [INF] Form Data - Location: ["SHOP 098"]
+2026-05-07 09:58:25.727 +05:30 [INF] Form Data - PurchaseDate: ["02/02/2025"]
+2026-05-07 09:58:25.730 +05:30 [INF] Form Data - PurchasePrice: ["100000"]
+2026-05-07 09:58:25.732 +05:30 [INF] Form Data - InstalledDate: ["03/05/2025"]
+2026-05-07 09:58:25.735 +05:30 [INF] Form Data - WarrantyExpiryDate: ["8/12/2029"]
+2026-05-07 09:58:25.737 +05:30 [INF] Form Data - Vendor: ["HUIII"]
+2026-05-07 09:58:25.739 +05:30 [INF] Form Data - InvoiceNumber: ["CUV102365"]
+2026-05-07 09:58:25.741 +05:30 [INF] Form Data - Notes: [""]
+2026-05-07 09:58:25.743 +05:30 [INF] Form Data - __RequestVerificationToken: ["CfDJ8K7-ShCvWIpPnzuEzzQvonbMLk4lO6T7Ku4rhuSJWCZaWwQYv64ARphVkztMF-1JSoxd8TqD0elUGNCOjT5lU9XREX_HcthlwGaq_6acB3pZ0rC4vGtFdRSfpUcLAIkGep_fSMZV88s7SukNipg3DTFLoUHb8hdld6fDTh2MmrVFzeoRHhrM2iJbwhSMqQkgpw"]
+2026-05-07 09:58:25.756 +05:30 [INF] Item 12 'SWITCH ' added by admin.
+2026-05-07 09:58:25.760 +05:30 [INF] HTTP POST /Items/Add responded 302 in 62.5204 ms
+2026-05-07 09:58:25.773 +05:30 [INF] HTTP GET /Items/Details/12 responded 200 in 7.6749 ms
+2026-05-07 09:58:31.163 +05:30 [INF] HTTP GET /Home/Index responded 200 in 4.9928 ms
+2026-05-07 09:58:34.059 +05:30 [INF] HTTP GET /Items/Index responded 200 in 126.0964 ms
+2026-05-07 09:58:49.680 +05:30 [INF] HTTP GET /Items/Details/5 responded 200 in 4.3775 ms
+2026-05-07 09:58:52.180 +05:30 [INF] HTTP GET /Items/Update/5 responded 200 in 70.2210 ms
+2026-05-07 09:59:08.864 +05:30 [INF] Item 5 'Ergonomic Office Chair' updated by admin.
+2026-05-07 09:59:08.867 +05:30 [INF] HTTP POST /Items/Update/5 responded 302 in 35.8092 ms
+2026-05-07 09:59:08.875 +05:30 [INF] HTTP GET /Items/Details/5 responded 200 in 2.9597 ms
+2026-05-07 09:59:14.224 +05:30 [INF] HTTP GET /Home/Index responded 200 in 3.9832 ms
+2026-05-07 09:59:39.704 +05:30 [INF] HTTP GET /Items/Index responded 200 in 7.2913 ms
+2026-05-07 09:59:53.539 +05:30 [INF] HTTP GET /Items/Index responded 200 in 20.8413 ms
+2026-05-07 10:00:46.977 +05:30 [INF] HTTP GET /Items/Index responded 200 in 4.1183 ms
+2026-05-07 10:00:51.153 +05:30 [INF] HTTP GET /Items/Index responded 200 in 4.8040 ms
+2026-05-07 10:01:00.439 +05:30 [INF] HTTP GET /Home/Index responded 200 in 3.2778 ms
+2026-05-07 10:01:25.783 +05:30 [INF] HTTP GET /Items/Index responded 200 in 4.1685 ms
+2026-05-07 10:01:26.580 +05:30 [INF] HTTP GET /Items/Add responded 200 in 4.7203 ms
+2026-05-07 10:01:40.812 +05:30 [INF] HTTP GET /Home/Index responded 200 in 2.2023 ms
+2026-05-07 10:01:42.026 +05:30 [INF] HTTP GET /Items/Index responded 200 in 3.9114 ms
+2026-05-07 10:01:44.047 +05:30 [INF] HTTP GET /Items/Index responded 200 in 3.6986 ms
+2026-05-07 10:01:54.393 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 10:01:54.701 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 10:01:54.918 +05:30 [INF] HTTP GET /Items/Index responded 200 in 213.3346 ms
+2026-05-07 10:02:00.156 +05:30 [INF] HTTP GET /Items/Index responded 200 in 104.0510 ms
+2026-05-07 10:02:14.970 +05:30 [INF] HTTP GET /Items/Details/1 responded 200 in 63.2103 ms
+2026-05-07 10:02:41.415 +05:30 [INF] Exported 1 items to CSV.
+2026-05-07 10:02:41.422 +05:30 [INF] HTTP GET /Items/ExportSingle/1 responded 200 in 68.4600 ms
+2026-05-07 10:02:41.534 +05:30 [INF] Exported 1 items to CSV.
+2026-05-07 10:02:41.537 +05:30 [INF] HTTP GET /Items/ExportSingle/1 responded 200 in 21.2332 ms
+2026-05-07 10:02:56.197 +05:30 [INF] Exported 6 items to CSV.
+2026-05-07 10:02:56.199 +05:30 [INF] HTTP GET /Items/ExportAll responded 200 in 21.6907 ms
+2026-05-07 10:02:56.249 +05:30 [INF] Exported 6 items to CSV.
+2026-05-07 10:02:56.251 +05:30 [INF] HTTP GET /Items/ExportAll responded 200 in 22.9623 ms
+2026-05-07 10:03:04.655 +05:30 [INF] HTTP GET /Home/Index responded 200 in 35.1975 ms
+2026-05-07 10:03:12.917 +05:30 [INF] HTTP GET /Items/Add responded 200 in 91.5529 ms
+2026-05-07 10:03:16.845 +05:30 [INF] HTTP GET /Admin/Import responded 200 in 11.4430 ms
+2026-05-07 10:05:00.612 +05:30 [INF] Item 13 'Lenovo ThinkPad E14' added by admin.
+2026-05-07 10:05:00.618 +05:30 [INF] Item 14 'Biometric Attendance Device' added by admin.
+2026-05-07 10:05:00.624 +05:30 [INF] Item 15 'Synology NAS' added by admin.
+2026-05-07 10:05:00.631 +05:30 [INF] Item 16 'Projector Epson EB-X06' added by admin.
+2026-05-07 10:05:00.638 +05:30 [INF] Item 17 'Fire Alarm Panel' added by admin.
+2026-05-07 10:05:00.643 +05:30 [INF] Bulk import: 5 items imported, 11 errors.
+2026-05-07 10:05:00.651 +05:30 [INF] HTTP POST /Admin/Import responded 200 in 343.6719 ms
+2026-05-07 10:05:05.912 +05:30 [INF] HTTP GET /Items/Index responded 200 in 6.6191 ms
+2026-05-07 10:05:10.034 +05:30 [INF] HTTP GET /Home/Index responded 200 in 4.2245 ms
+2026-05-07 10:05:18.707 +05:30 [INF] HTTP GET /Items/Add responded 200 in 5.3395 ms
+2026-05-07 10:07:40.947 +05:30 [INF] HTTP GET /Home/Index responded 200 in 4.5591 ms
+2026-05-07 10:07:51.882 +05:30 [INF] HTTP GET /Items/Index responded 200 in 5.1552 ms
+2026-05-07 10:08:12.885 +05:30 [INF] HTTP GET /Admin/Users responded 200 in 18.8573 ms
+2026-05-07 10:10:46.263 +05:30 [INF] HTTP GET /Items/Add responded 200 in 5.1887 ms
+2026-05-07 10:10:59.443 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 10:10:59.763 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 10:11:00.077 +05:30 [INF] HTTP GET /Items/Add responded 200 in 301.8257 ms
+2026-05-07 10:15:08.019 +05:30 [INF] HTTP GET /Admin/Users responded 200 in 102.4906 ms
+2026-05-07 10:15:11.635 +05:30 [INF] HTTP GET /Admin/ResetPassword responded 200 in 313.7282 ms
+2026-05-07 10:15:40.166 +05:30 [INF] HTTP POST /Admin/ResetPassword responded 200 in 110.2593 ms
+2026-05-07 10:16:14.399 +05:30 [INF] HTTP POST /Admin/ResetPassword responded 200 in 20.8430 ms
+2026-05-07 10:16:41.159 +05:30 [INF] HTTP POST /Admin/ResetPassword responded 302 in 396.2694 ms
+2026-05-07 10:16:41.182 +05:30 [INF] HTTP GET /Admin/Users responded 200 in 6.0257 ms
+2026-05-07 10:16:50.788 +05:30 [INF] User 'admin' logged out.
+2026-05-07 10:16:50.801 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 30.4832 ms
+2026-05-07 10:16:50.867 +05:30 [INF] HTTP GET / responded 200 in 43.7487 ms
+2026-05-07 10:17:00.830 +05:30 [INF] User 'admin' logged in.
+2026-05-07 10:17:00.834 +05:30 [INF] HTTP POST / responded 302 in 363.4149 ms
+2026-05-07 10:17:01.015 +05:30 [INF] HTTP GET /Home/Index responded 200 in 171.5505 ms
+2026-05-07 10:17:04.373 +05:30 [INF] HTTP GET /Admin/Users responded 200 in 8.4762 ms
+2026-05-07 10:17:08.314 +05:30 [INF] User 'admin' logged out.
+2026-05-07 10:17:08.316 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 8.5705 ms
+2026-05-07 10:17:08.337 +05:30 [INF] HTTP GET / responded 200 in 6.0271 ms
+2026-05-07 10:17:22.312 +05:30 [INF] User 'editor' logged in.
+2026-05-07 10:17:22.315 +05:30 [INF] HTTP POST / responded 302 in 235.6513 ms
+2026-05-07 10:17:22.344 +05:30 [INF] HTTP GET /Account/ChangePassword responded 200 in 16.4384 ms
+2026-05-07 10:17:41.408 +05:30 [INF] HTTP POST /Account/ChangePassword responded 302 in 229.8593 ms
+2026-05-07 10:17:41.425 +05:30 [INF] HTTP GET /Home/Index responded 200 in 7.5244 ms
+2026-05-07 10:17:47.992 +05:30 [INF] HTTP GET /Items/Index responded 200 in 257.7305 ms
+2026-05-07 10:17:52.711 +05:30 [INF] HTTP GET /Items/Add responded 200 in 25.1919 ms
+2026-05-07 10:17:57.532 +05:30 [INF] HTTP GET /Home/Index responded 200 in 8.4308 ms
+2026-05-07 10:17:59.041 +05:30 [INF] HTTP GET /Items/Add responded 200 in 7.2991 ms
+2026-05-07 10:18:30.945 +05:30 [INF] HTTP GET /Home/Index responded 200 in 11.0180 ms
+2026-05-07 10:18:37.297 +05:30 [INF] User 'editor' logged out.
+2026-05-07 10:18:37.300 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 6.6480 ms
+2026-05-07 10:18:37.326 +05:30 [INF] HTTP GET / responded 200 in 6.1702 ms
+2026-05-07 10:18:42.641 +05:30 [INF] User 'admin' logged in.
+2026-05-07 10:18:42.646 +05:30 [INF] HTTP POST / responded 302 in 208.0197 ms
+2026-05-07 10:18:42.667 +05:30 [INF] HTTP GET /Home/Index responded 200 in 7.6063 ms
+2026-05-07 10:18:49.730 +05:30 [INF] User 'admin' logged out.
+2026-05-07 10:18:49.737 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 15.9593 ms
+2026-05-07 10:18:49.757 +05:30 [INF] HTTP GET / responded 200 in 1.7100 ms
+2026-05-07 10:37:28.612 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 10:37:37.310 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 10:37:37.597 +05:30 [INF] HTTP GET / responded 200 in 275.2160 ms
+2026-05-07 11:21:24.782 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 11:21:25.063 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 11:21:25.262 +05:30 [INF] HTTP GET / responded 200 in 189.5427 ms
+2026-05-07 11:26:45.227 +05:30 [INF] HTTP GET / responded 200 in 16.2130 ms
+2026-05-07 11:27:06.525 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 11:27:07.150 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 11:27:07.230 +05:30 [INF] HTTP GET / responded 200 in 74.9528 ms
+2026-05-07 11:27:28.845 +05:30 [INF] User 'admin' logged in.
+2026-05-07 11:27:28.850 +05:30 [INF] HTTP POST / responded 302 in 254.2104 ms
+2026-05-07 11:27:29.058 +05:30 [INF] HTTP GET /Home/Index responded 200 in 202.5812 ms
+2026-05-07 11:27:32.971 +05:30 [INF] HTTP GET / responded 302 in 3.8391 ms
+2026-05-07 11:27:33.002 +05:30 [INF] HTTP GET /Home/Index responded 200 in 22.6541 ms
+2026-05-07 11:27:35.302 +05:30 [INF] User 'admin' logged out.
+2026-05-07 11:27:35.317 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 22.0947 ms
+2026-05-07 11:27:35.325 +05:30 [INF] HTTP GET / responded 200 in 2.3617 ms
+2026-05-07 11:30:18.467 +05:30 [INF] HTTP GET / responded 200 in 2.3581 ms
+2026-05-07 11:30:35.706 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 11:30:39.060 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 11:30:39.204 +05:30 [INF] HTTP GET / responded 200 in 135.0770 ms
+2026-05-07 11:42:43.598 +05:30 [INF] User 'admin' logged in.
+2026-05-07 11:42:43.601 +05:30 [INF] HTTP POST / responded 302 in 236.1748 ms
+2026-05-07 11:42:43.803 +05:30 [INF] HTTP GET /Home/Index responded 200 in 196.3016 ms
+2026-05-07 13:02:01.408 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:02:10.269 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:02:10.585 +05:30 [INF] HTTP GET /Home/Index responded 200 in 309.3295 ms
+2026-05-07 13:02:10.901 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 6.1031 ms
+2026-05-07 13:02:12.505 +05:30 [INF] HTTP GET /Home/Index responded 200 in 97.9624 ms
+2026-05-07 13:02:12.717 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 0.8830 ms
+2026-05-07 13:02:19.391 +05:30 [INF] HTTP GET /Items/Index responded 200 in 205.5208 ms
+2026-05-07 13:02:22.368 +05:30 [INF] User 'admin' logged out.
+2026-05-07 13:02:22.371 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 16.9671 ms
+2026-05-07 13:02:22.414 +05:30 [INF] HTTP GET / responded 200 in 36.1287 ms
+2026-05-07 13:02:53.718 +05:30 [INF] User 'admin' logged in.
+2026-05-07 13:02:53.721 +05:30 [INF] HTTP POST / responded 302 in 133.2253 ms
+2026-05-07 13:02:53.733 +05:30 [INF] HTTP GET /Home/Index responded 200 in 5.5265 ms
+2026-05-07 13:03:18.493 +05:30 [INF] HTTP GET /Items/Index responded 200 in 11.2510 ms
+2026-05-07 13:06:02.147 +05:30 [INF] HTTP GET /Items/Index responded 200 in 6.8430 ms
+2026-05-07 13:06:02.445 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 1.2004 ms
+2026-05-07 13:06:09.827 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:06:15.353 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:06:15.724 +05:30 [INF] HTTP GET /Items/Index responded 200 in 362.0416 ms
+2026-05-07 13:06:15.948 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 6.4656 ms
+2026-05-07 13:07:57.882 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:08:02.691 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:08:03.042 +05:30 [INF] HTTP GET /Items/Index responded 200 in 343.6909 ms
+2026-05-07 13:08:03.299 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 6.7710 ms
+2026-05-07 13:08:14.832 +05:30 [INF] User 'admin' logged out.
+2026-05-07 13:08:14.836 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 36.6819 ms
+2026-05-07 13:08:14.877 +05:30 [INF] HTTP GET / responded 200 in 36.3225 ms
+2026-05-07 13:13:55.700 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:14:10.441 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:14:10.587 +05:30 [INF] HTTP GET / responded 200 in 138.4067 ms
+2026-05-07 13:14:11.886 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 3.5728 ms
+2026-05-07 13:19:19.688 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:19:22.931 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:19:23.065 +05:30 [INF] HTTP GET / responded 200 in 125.1551 ms
+2026-05-07 13:19:24.658 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 3.4271 ms
+2026-05-07 13:21:25.308 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:21:32.190 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:21:32.433 +05:30 [INF] HTTP GET / responded 200 in 231.8615 ms
+2026-05-07 13:21:33.932 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 13.4156 ms
+2026-05-07 13:23:03.755 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 13:23:07.951 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 13:23:08.241 +05:30 [INF] HTTP GET / responded 200 in 277.1802 ms
+2026-05-07 13:23:10.369 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 2.8995 ms
+2026-05-07 13:31:27.205 +05:30 [INF] HTTP GET / responded 200 in 30.5251 ms
+2026-05-07 18:13:31.973 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 18:13:34.636 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:13:36.124 +05:30 [INF] User 'admin' logged in.
+2026-05-07 18:13:36.141 +05:30 [INF] HTTP POST / responded 302 in 1493.3664 ms
+2026-05-07 18:13:36.711 +05:30 [INF] HTTP GET /Home/Index responded 200 in 542.6245 ms
+2026-05-07 18:13:41.989 +05:30 [INF] User 'admin' logged out.
+2026-05-07 18:13:42.005 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 63.7618 ms
+2026-05-07 18:13:42.150 +05:30 [INF] HTTP GET / responded 200 in 99.6126 ms
+2026-05-07 18:23:43.273 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 18:24:32.216 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 18:24:32.338 +05:30 [INF] HTTP GET / responded 200 in 115.3511 ms
+2026-05-07 18:24:48.308 +05:30 [INF] User 'admin' logged in.
+2026-05-07 18:24:48.317 +05:30 [INF] HTTP POST / responded 302 in 320.5165 ms
+2026-05-07 18:24:48.651 +05:30 [INF] HTTP GET /Home/Index responded 200 in 313.8463 ms
+2026-05-07 19:47:15.468 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 19:49:49.059 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 20:00:57.487 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 20:08:38.247 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 20:08:38.779 +05:30 [INF] HTTP GET / responded 200 in 517.9666 ms
+2026-05-07 20:08:39.180 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 6.0413 ms
+2026-05-07 20:09:03.953 +05:30 [INF] User 'admin' logged in.
+2026-05-07 20:09:03.960 +05:30 [INF] HTTP POST / responded 302 in 591.0174 ms
+2026-05-07 20:09:04.527 +05:30 [INF] HTTP GET /Home/Index responded 200 in 553.0124 ms
+2026-05-07 20:09:23.533 +05:30 [INF] HTTP GET /Items/Index responded 200 in 365.5339 ms
+2026-05-07 20:09:45.604 +05:30 [INF] HTTP GET /Items/Details/1 responded 200 in 138.6683 ms
+2026-05-07 20:15:06.227 +05:30 [INF] HTTP GET /Home/Index responded 200 in 15.5301 ms
+2026-05-07 20:16:04.779 +05:30 [INF] HTTP GET /Items/Add responded 200 in 154.4070 ms
+2026-05-07 20:24:20.169 +05:30 [INF] User 'admin' logged out.
+2026-05-07 20:24:20.179 +05:30 [INF] HTTP POST /Account/Logout responded 302 in 29.9765 ms
+2026-05-07 20:24:20.199 +05:30 [INF] HTTP GET / responded 200 in 6.8385 ms
+2026-05-07 20:45:30.887 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 20:46:15.699 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 20:46:41.141 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 20:46:41.406 +05:30 [INF] HTTP GET / responded 200 in 251.1759 ms
+2026-05-07 20:46:41.604 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 11.3103 ms
+2026-05-07 20:48:18.282 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 20:48:18.505 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 20:48:18.646 +05:30 [INF] HTTP GET / responded 200 in 133.2579 ms
+2026-05-07 20:48:19.011 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 6.3819 ms
+2026-05-07 20:49:43.418 +05:30 [INF] Inventory Dashboard starting up...
+2026-05-07 20:49:43.705 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-07 20:49:43.839 +05:30 [INF] HTTP GET / responded 200 in 125.2927 ms
+2026-05-07 20:49:44.393 +05:30 [INF] HTTP GET /favicon.ico responded 404 in 8.4140 ms

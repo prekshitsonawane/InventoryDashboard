@@ -1,0 +1,148 @@
+@using InventoryDashboard.Models
+@model List<InventoryDashboard.Models.AuditLog>
+@{
+    ViewData["Title"] = "Audit Log";
+    int total = ViewBag.TotalCount;
+    int currentPage = ViewBag.PageNumber;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<div class="page-header">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-1">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                <li class="breadcrumb-item active">Audit Log</li>
+            </ol>
+        </nav>
+        <h1 class="page-title"><i class="bi bi-journal-text me-2"></i>Audit Log</h1>
+        <p class="text-muted mb-0">@total total entries — all changes to inventory items are recorded here.</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        @if (Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered mb-0" id="auditTable">
+                    <thead class="table-header-primary">
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Action</th>
+                            <th>Item</th>
+                            <th>Changed By</th>
+                            <th style="width:90px" class="text-center">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var log in Model)
+                        {
+                            var actionCls = log.Action switch {
+                                "Added"   => "bg-success",
+                                "Updated" => "bg-primary",
+                                "Deleted" => "bg-danger",
+                                _ => "bg-secondary"
+                            };
+                            <tr>
+                                <td class="small text-muted text-nowrap">
+                                    @log.ChangedAt.ToString("dd MMM yyyy")<br />
+                                    <strong>@log.ChangedAt.ToString("HH:mm:ss")</strong> UTC
+                                </td>
+                                <td><span class="badge @actionCls">@log.Action</span></td>
+                                <td>
+                                    <div class="fw-semibold">@(log.ItemName ?? "—")</div>
+                                    <div class="text-muted small">ID: @log.ItemID</div>
+                                </td>
+                                <td>@(log.ChangedByUserName ?? log.ChangedByUserID ?? "System")</td>
+                                <td class="text-center">
+                                    @if (log.OldValues != null || log.NewValues != null)
+                                    {
+                                        <button class="btn btn-sm btn-outline-secondary"
+                                                onclick="showAuditDetail(@log.LogID)"
+                                                data-old='@(log.OldValues?.Replace("'", "&#39;") ?? "")'
+                                                data-new='@(log.NewValues?.Replace("'", "&#39;") ?? "")'
+                                                id="auditBtn-@log.LogID">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (totalPages > 1)
+            {
+                <div class="d-flex justify-content-between align-items-center px-3 py-2 border-top">
+                    <span class="text-muted small">Page @currentPage of @totalPages</span>
+                    <nav>
+                        <ul class="pagination pagination-sm mb-0">
+                            <li class="page-item @(currentPage <= 1 ? "disabled" : "")">
+                                <a class="page-link" asp-action="AuditLog" asp-route-page="@(currentPage - 1)">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                            @for (int p = Math.Max(1, currentPage - 2); p <= Math.Min(totalPages, currentPage + 2); p++)
+                            {
+                                <li class="page-item @(p == currentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="AuditLog" asp-route-page="@p">@p</a>
+                                </li>
+                            }
+                            <li class="page-item @(currentPage >= totalPages ? "disabled" : "")">
+                                <a class="page-link" asp-action="AuditLog" asp-route-page="@(currentPage + 1)">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="empty-state">
+                <i class="bi bi-journal-x"></i>
+                <p>No audit log entries yet.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Audit Detail Modal -->
+<div class="modal fade" id="auditDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-search me-2"></i>Change Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <h6 class="fw-bold text-danger">Before</h6>
+                        <pre id="auditOld" class="audit-json bg-light p-3 rounded small"></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="fw-bold text-success">After</h6>
+                        <pre id="auditNew" class="audit-json bg-light p-3 rounded small"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+function showAuditDetail(id) {
+    var btn = document.getElementById('auditBtn-' + id);
+    var oldVal = btn.getAttribute('data-old');
+    var newVal = btn.getAttribute('data-new');
+    try { document.getElementById('auditOld').textContent = oldVal ? JSON.stringify(JSON.parse(oldVal), null, 2) : 'N/A'; } catch(e) { document.getElementById('auditOld').textContent = oldVal || 'N/A'; }
+    try { document.getElementById('auditNew').textContent = newVal ? JSON.stringify(JSON.parse(newVal), null, 2) : 'N/A'; } catch(e) { document.getElementById('auditNew').textContent = newVal || 'N/A'; }
+    new bootstrap.Modal(document.getElementById('auditDetailModal')).show();
+}
+</script>
+}

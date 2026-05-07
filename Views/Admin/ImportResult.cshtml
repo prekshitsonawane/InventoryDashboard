@@ -1,0 +1,67 @@
+@model InventoryDashboard.Models.ImportResultViewModel
+@{
+    ViewData["Title"] = "Import Results";
+}
+
+<div class="page-header">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-1">
+                <li class="breadcrumb-item"><a asp-controller="Admin" asp-action="Import">Bulk Import</a></li>
+                <li class="breadcrumb-item active">Results</li>
+            </ol>
+        </nav>
+        <h1 class="page-title"><i class="bi bi-clipboard-check me-2"></i>Import Results</h1>
+    </div>
+    <div class="page-actions">
+        <a asp-controller="Items" asp-action="Index" class="btn btn-primary">
+            <i class="bi bi-table me-1"></i> View Inventory
+        </a>
+        <a asp-action="Import" class="btn btn-outline-secondary">
+            <i class="bi bi-upload me-1"></i> Import Again
+        </a>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="stat-card stat-card-success">
+            <div class="stat-icon"><i class="bi bi-check-circle"></i></div>
+            <div class="stat-value">@Model.ImportedCount</div>
+            <div class="stat-label">Items Imported Successfully</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="stat-card @(Model.ErrorCount > 0 ? "stat-card-danger" : "stat-card-success")">
+            <div class="stat-icon"><i class="bi bi-exclamation-triangle"></i></div>
+            <div class="stat-value">@Model.ErrorCount</div>
+            <div class="stat-label">Rows Skipped / Errors</div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Errors.Any())
+{
+    <div class="card">
+        <div class="card-header text-danger fw-semibold">
+            <i class="bi bi-exclamation-triangle me-2"></i>Error Details (@Model.ErrorCount rows)
+        </div>
+        <div class="card-body p-0">
+            <div class="list-group list-group-flush">
+                @foreach (var err in Model.Errors)
+                {
+                    <div class="list-group-item list-group-item-danger py-2 small">
+                        <i class="bi bi-x-circle me-2"></i>@err
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-success">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        All rows imported successfully with no errors!
+    </div>
+}

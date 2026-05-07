@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Users\\acer\\Desktop\\my projects\\InventoryDashboard\\InventoryDashboard\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "c:\\Users\\acer\\Desktop\\my projects\\InventoryDashboard\\InventoryDashboard\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.InventoryDashboard.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.InventoryDashboard.props",
+      "PackagePath": "build\\InventoryDashboard.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.InventoryDashboard.props",
+      "PackagePath": "buildMultiTargeting\\InventoryDashboard.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.InventoryDashboard.props",
+      "PackagePath": "buildTransitive\\InventoryDashboard.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

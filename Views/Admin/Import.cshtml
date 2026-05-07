@@ -1,0 +1,102 @@
+@{
+    ViewData["Title"] = "Bulk CSV Import";
+}
+
+<div class="page-header">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-1">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+                <li class="breadcrumb-item active">Bulk Import</li>
+            </ol>
+        </nav>
+        <h1 class="page-title"><i class="bi bi-upload me-2"></i>Bulk CSV Import</h1>
+    </div>
+    <div class="page-actions">
+        <a asp-action="DownloadTemplate" class="btn btn-outline-success" id="btnDownloadTemplate">
+            <i class="bi bi-download me-1"></i> Download Template
+        </a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card mb-4">
+            <div class="card-header fw-semibold">
+                <i class="bi bi-info-circle me-2 text-primary"></i>Instructions
+            </div>
+            <div class="card-body">
+                <ol class="mb-0">
+                    <li>Download the <strong>CSV template</strong> using the button above.</li>
+                    <li>Fill in your asset data — one row per item.</li>
+                    <li>Required columns: <code>Name</code>, <code>SerialNumber</code>.</li>
+                    <li>Leave <code>ItemID</code>, <code>CreatedAt</code>, <code>UpdatedAt</code> blank — these are auto-generated.</li>
+                    <li>Items with duplicate serial numbers will be skipped.</li>
+                    <li>Upload the completed file below.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header fw-semibold">
+                <i class="bi bi-cloud-upload me-2 text-primary"></i>Upload File
+            </div>
+            <div class="card-body">
+                <div asp-validation-summary="All" class="alert alert-danger py-2 mb-3"></div>
+                <form asp-action="Import" method="post" enctype="multipart/form-data" id="importForm">
+                    @Html.AntiForgeryToken()
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Select CSV File</label>
+                        <div class="upload-dropzone" id="uploadDropzone">
+                            <i class="bi bi-file-earmark-spreadsheet fs-1 text-muted"></i>
+                            <p class="mt-2 mb-1 text-muted">Drag & drop your CSV file here, or click to browse</p>
+                            <p class="small text-muted">Only .csv files are accepted</p>
+                            <input type="file" name="csvFile" id="csvFileInput" accept=".csv"
+                                   class="visually-hidden" onchange="updateFileName(this)" />
+                            <button type="button" class="btn btn-outline-primary mt-2"
+                                    onclick="document.getElementById('csvFileInput').click()">
+                                <i class="bi bi-folder2-open me-1"></i> Browse File
+                            </button>
+                        </div>
+                        <div id="selectedFileName" class="mt-2 text-success small fw-semibold d-none">
+                            <i class="bi bi-file-earmark-check me-1"></i>
+                            <span id="fileNameText"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a asp-controller="Items" asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary" id="btnImportSubmit">
+                            <i class="bi bi-upload me-1"></i> Import Items
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+function updateFileName(input) {
+    if (input.files.length > 0) {
+        document.getElementById('fileNameText').textContent = input.files[0].name;
+        document.getElementById('selectedFileName').classList.remove('d-none');
+    }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    var dz = document.getElementById('uploadDropzone');
+    dz.addEventListener('dragover', function(e) { e.preventDefault(); dz.classList.add('dragover'); });
+    dz.addEventListener('dragleave', function() { dz.classList.remove('dragover'); });
+    dz.addEventListener('drop', function(e) {
+        e.preventDefault(); dz.classList.remove('dragover');
+        var file = e.dataTransfer.files[0];
+        if (file) {
+            document.getElementById('csvFileInput').files = e.dataTransfer.files;
+            document.getElementById('fileNameText').textContent = file.name;
+            document.getElementById('selectedFileName').classList.remove('d-none');
+        }
+    });
+});
+</script>
+}

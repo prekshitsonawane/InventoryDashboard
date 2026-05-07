@@ -1,0 +1,13 @@
+@* Load jQuery first (required by validation scripts) *@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+@* Load Validation scripts from CDN for maximum reliability in this environment *@
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+
+@* Optional: Fallback to local if CDN fails (but we rely on CDN here) *@
+<script>
+    if (!window.jQuery) {
+        console.error("jQuery failed to load from CDN. Validation may not work.");
+    }
+</script>
